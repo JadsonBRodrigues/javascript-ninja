@@ -5,10 +5,11 @@ Declare uma variável chamada `championship` que receberá o nome do campeonato,
 e imprima o nome desse campeonato no console.
 */
 
-var championship = 'Campeonato Paraibano'
+*/
 
-console.log(championship);
-Campeonato Paraibano
+var championship = 'Campeonato Paraibano';
+
+console.log(championship)
 
 
 /*
@@ -17,11 +18,9 @@ Os elementos serão nomes de times do campeonato escolhido, e os nomes devem
 estar na ordem em que eles aparecem na tabela no momento da solução desse
 desafio.
 */
- var teams = ['Treze', 'Serra Branca', 'Botafogo', 'Sousa', 'CSP'];
- 
- console.log('Times que estão a participar do campeonato:', teams)
 
-Times que estão a participar do campeonato: [ 'Treze', 'Serra Branca', 'Botafogo', 'Sousa', 'CSP' ]
+var teams = ['Treze', 'Sousa', 'Botafogo-PB', 'Cajueiro', 'Nacional de Patos'];
+
 
 /*
 Crie uma função chamada `showTeamPosition` com as seguintes características:
@@ -40,49 +39,45 @@ Crie uma função chamada `showTeamPosition` com as seguintes características:
     "Não temos a informação do time que está nessa posição."
 */
 
+function showTeamPosition (position) {
 
-function showTeamPosition(position) {
-  // Ajustar a posição para o índice do array
-
-  // Verificar se a posição está entre os 5 primeiros times
-  if (position < 1 || position > 5) {
-    return "Não temos a informação do time que está nesta posição.";
-  } else {
-    return `O time que está em ${position}º lugar é o ${teams[position - 1]}.`;
-  }
+if (position < 0 || position > 5) {
+  return "Não temos a informação do time que está nessa posição.";
+} 
+else {
+  return `O time que está em ${position} º lugar é o ${teams[position - 1]}.`
 }
+}
+
+*/
 
 /*
 Escolha 4 times do campeonato selecionado e mostre a posição dele, usando a
 função acima. Entre esses 4, adicione 1 que não esteja entre os 5 primeiros.
 */
+
 showTeamPosition (1)
-'O time que está em 1º lugar é o Treze.'
-
-showTeamPosition (2)
-'O time que está em 2º lugar é o Serra Branca.'
-
- showTeamPosition (3)
-'O time que está em 3º lugar é o Botafogo-PB.'
-
-showTeamPosition (4)
-'O time que está em 4º lugar é o Sousa.'
-
- showTeamPosition (6)
+'O time que está em 1 º lugar é o Treze.'
+> showTeamPosition (3)
+'O time que está em 3 º lugar é o Botafogo-PB.'
+> showTeamPosition (2)
+'O time que está em 2 º lugar é o Sousa.'
+> showTeamPosition (6)
 'Não temos a informação do time que está nessa posição.'
-
 /*
 Mostre os números de 20 a 30 no console (inclusive o 30), usando a estrutura de
 repetição "while".
 */
-var number = 20; // Início da contagem
 
-while (number <= 30) { // Condição para executar o loop
-  console.log(number); // Mostra o número atual no console
-  number++; // Incrementa o número em 1 a cada interação
+var num = 20;
+
+while (num <= 30){
+  console.log(num++)
 }
 
 /*
+*/
+
 Crie uma função chamada `convertToHex`, com as seguintes características:
     - A função recebe uma cor por parâmetro, do tipo string. Exemplo: "red";
     - Escolha 5 cores que serão convertidas do nome da cor para o seu
@@ -95,45 +90,39 @@ Crie uma função chamada `convertToHex`, com as seguintes características:
     "Não temos o equivalente hexadecimal para [COR]."
     
 */
-function convertToHex (cor) {
-... var colours = {
-... 'Red':  {hexadecimal: '#FF0000'},
-... 'Blue': {hexadecimal: '#0000FF'},
-... 'Yellow': {hexadecimal: '#FFFF00'},
-... 'Green': {hexadecimal: '#00FF00'},
-... 'Pink': {hexadecimal: '#FFC0CB'},
-... }
-... switch (cor) {
-... case 'Red':
-... return `O hexadecimal para a cor ${cor} é ${colours[cor].hexadecimal}.`;
-... break;
-... case 'Blue':
-... return `O hexadecimal para a cor ${cor} é ${colours[cor].hexadecimal}.`;
-... break;
-... case 'Yellow':
-... return `O hexadecimal para a cor ${cor} é ${colours[cor].hexadecimal}.`;
-... break;
-... case 'Green':
-... return `O hexadecimal para a cor ${cor} é ${colours[cor].hexadecimal}.`;
-... break;
-... case 'Pink':
-... return `O hexadecimal para a cor ${cor} é ${colours[cor].hexadecimal}.`;
-... break;
-... default:
-... return `Não temos o equivalente hexadecimal para ${cor}.`;
-... }
-... }
+
+function convertToHex (color) {
+
+var colours = {
+'Vermelho': hexadecimal: #FF0000,
+'Azul': hexadecimal: #0000FF,
+'Amarelo': hexadecimal: #00FF00,
+'Branco': hexadecimal: #FFFFFF,
+'Verde': hexadecimal: #00FF00
+};
+
+switch (color) {
+case 'Vermelho': 
+console.log (`O hexadecimal para a cor ${color} é ${colours[color].hexadecimal}`);
+break;
+case 'Azul': 
+console.log (`O hexadecimal para a cor ${color} é ${colours[color].hexadecimal}`);
+break;
+case 'Amarelo': 
+console.log (`O hexadecimal para a cor ${color} é ${colours[color].hexadecimal}`);break;
+break;
+case 'Branco': 
+console.log (`O hexadecimal para a cor ${color} é ${colours[color].hexadecimal}`);break;
+break;
+case 'Verde': 
+console.log (`O hexadecimal para a cor ${color} é ${colours[color].hexadecimal}`);break;
+break;
+default:
+console.log(`Não temos o equivalente hexadecimal para ${color}`)
+
+}
 
 /*
 Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
-
-convertToHex ('Red')
-convertToHex ('Blue')
-convertToHex ('Yellow')
-convertToHex ('White')
-convertToHex ('Grey')
-convertToHex ('Green')
-convertToHex ('Pink')
-convertToHex ('Black')
 
