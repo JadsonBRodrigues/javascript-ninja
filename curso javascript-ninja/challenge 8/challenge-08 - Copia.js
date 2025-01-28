@@ -59,35 +59,27 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
   "Operação inválida."
 */
 
-function calculator(operator) {
-  return function (a, b) {
-    var resultado;
+function calculator (operator) {
+return function (a,b) {
+var resultado;
 
-    // Verifica qual operação será realizada
-    switch (operator) {
-      case '+':
-        resultado = a + b;
-        break;
-      case '-':
-        resultado = a - b;
-        break;
-      case '*':
-        resultado = a * b;
-        break;
-      case '/':
-        resultado = b !== 0 ? a / b : "Erro: divisão por zero";
-        break;
-      case '%':
-        resultado = a % b;
-        break;
-      default:
-        return "Operação inválida.";
-    }
-
-    return `Resultado da operação: ${a} ${operator} ${b} = ${resultado}.`;
-  };
+switch (operator) {
+case `+`: resultado = a + b;
+  break;
+case `-`: resultado = a - b;
+  break;
+case `*`: resultado = a * b;
+  break;
+case `/`: resultado = b !== 0 ? a / b : `Erro: a divisão por zero não é permitida.`
+  break;
+case `%`: resultado = a % b;
+  break;
+default:
+`Operação inválida.`;
 }
 
+return console.log (`Resultado da operação: ${a} ${operator} ${b} = ${resultado}.`)
+}}
 
 /*
 Declare uma variável chamada `sum`, que receberá a função acima, passando como
@@ -108,9 +100,17 @@ Agora, declare algumas variáveis com os nomes `subtraction`, `multiplication`,
 correto por parâmetro para cada uma delas.
 */
 
+var subtraction = calculator ('-');
+var multiplication = calculator ('*');
+var division = calculator ('/');
+var mod = calculator ('%');
 
 /*
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
 no console.
 */
 
+console.log(subtraction (1,1))
+console.log(multiplication(2,5))
+console.log(division(5,10))
+console.log(mod(20,10))

@@ -109,7 +109,7 @@
 	function showErrorMessage (operator) {
 	    return `Operação ${operator} não permitida!`;
 	  }
-	}
+	
 
 	/*
 	Nossa calculadora está pronta! Agora vamos testá-la:
