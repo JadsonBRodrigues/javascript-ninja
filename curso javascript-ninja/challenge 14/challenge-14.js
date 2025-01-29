@@ -57,7 +57,7 @@ Mostre o resultado no console.
 */
 console.log( '\nOperation:' );
 
-var operation = justNumbers.reduce(function(acumulado,atual) {
+var operation = justMod2Or3.reduce(function(acumulado,atual) {
 return (acumulado + 1) * atual;
 
 }, 0);
@@ -70,8 +70,8 @@ console.
 console.log( '\nOperation 2:' );
 
 
-var operation2 = justNumbers.reduceRight(function(acumulado,atual) {
-return (acumulado + 1) + atual;
+var operation2 = justMod2Or3.reduceRight(function(acumulado,atual) {
+return (acumulado + 1) * atual;
 }, 0);
 
 
@@ -100,6 +100,8 @@ console.log( '\nInversed Name:' );
 inversedName = name.reduceRight(function(acumulado, atual) {
 	return acumulado + atual;
 });
+
+OU name.reverse ().join('');
 
 /*
 Mostre no console o array `numberObjects`.
