@@ -94,5 +94,4 @@ console.log (João.getFullName () + ' agora tem ' + João.getAge () + ' anos. ')
 console.log (Joana.getFullName () + ' agora tem ' + Joana.addAge(3).getAge() + ' anos. ');
 
 
-
 }) ();
