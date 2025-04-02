@@ -1,4 +1,4 @@
-(function (DOM) {
+  (function($) {
   'use strict';
 
   /*
@@ -19,7 +19,7 @@
 
   Logo abaixo do formulário, deverá ter uma tabela que irá mostrar todos os
   carros cadastrados. Ao clicar no botão de cadastrar, o novo carro deverá
-  aparecer no final da tabela.9p
+  aparecer no final da tabela.
 
   Agora você precisa dar um nome para o seu app. Imagine que ele seja uma
   empresa que vende carros. Esse nosso app será só um catálogo, por enquanto.
@@ -39,77 +39,48 @@
   function app () {
     return {
       init: function init () {
-      console.log ('app init');
-      this.companyInfo();
-      this.initEvents();
-    },
+        console.log ('app init');
+        this.companyInfo();
+        this.initEvents();
+      },
 
-    initEvents: function initEvents () {
-      var $formRegister = new DOM('[data-js="form-register"]');
-      $formRegister.on('submit', this.handleSubmit(this));
-    },
+      initEvents: function initEvents() {
+        $('[data-js="form-register"]').get.on('submit', this.handleSubmit);
+      },
 
-    handleSubmit: function handleSubmit (event) {
-      event.preventDefault();
-      console.log ('submit');
-      var $tablecar = new DOM ('[data-js="table-car"]').get()[0];
-      $tablecar.appendChild(app.createNewcar());
-    },
+      handleSubmit: function handleSubmit(e) {
+        e.preventDefault();
+        console.log('submit');
+      },
 
 
- createNewcar: function createNewcar () {
-    var $fragment = document.createDocumentFragment();
-    var $tr = document.createElement ('tr');
-    var $tdImage = document.createElement ('td');
-    var $tdBrand = document.createElement ('td');
-    var $tdYear = document.createElement ('td');
-    var $tdSign = document.createElement ('td');
-    var $tdColor = document.createElement ('td');
+      companyInfo: function companyInfo() {
+        var ajax = new XMLHttpRequest();
+        ajax.open ('GET', '/company.json', true);
+        ajax.send();
+        ajax.addEventListener('readystatechange', this.getCompanyInfo, false);
+      },
 
-    $tdImage.textContent = new DOM ('[data-js="image"]').get()[0].value;
-    $tdBrand.textContent = new DOM ('[data-js="brand-model"]').get()[0].value;
-    $tdYear.textContent = new DOM ('[data-js="year"]').get()[0].value;
-    $tdSign.textContent = new DOM ('[data-js="sign"]').get()[0].value;
-    $tdColor.textContent = new DOM ('[data-js="color"]').get()[0].value;
+      getCompanyInfo: function getCompanyInfo() {
+        if (!app().isReady.call(this))
+          return;
 
-    $tr.appendChild($tdImage);
-    $tr.appendChild($tdBrand);
-    $tr.appendChild($tdYear);
-    $tr.appendChild($tdSign);
-    $tr.appendChild($tdColor);
+          var data = JSON.parse (this.responseText);
+          var $companyName = $ ('[data-js="company-name"]').get();
+          var $companyPhone = $ ('[data-js="company-phone"]').get();
+          $companyName.textContent = data.name;
+          $companyPhone.textContent = data.phone;
+      },
 
-      $fragment.appendChild($tr);
-        return $fragment;
-    },
+      isReady: function isReady() {
+        return this.readyState === 4 && this.status === 200
+      }
 
-    companyInfo: function companyInfo () {
-      var ajax = new XMLHttpRequest ();
-      ajax.open('GET', 'company.json', true);
-      ajax.send();
-      ajax.addEventListener ('readystatechange', this.getCompanyInfo, false);
-    },
+    };
+  }
 
-    getCompanyInfo: function getCompanyInfo() {
-    if (!app().isReady.call (this))
-      return;
-
-    var data = JSON.parse (this.responseText);
-    var $companyName = new DOM ('[data-js="company-name"]');
-    var $companyPhone = new DOM ('[data-js="company-phone"]');
-    $companyName.textContent = data.name;
-    $companyPhone.textContent = data.phone;
-   
-    },
-
-
-   isReady: function isReady () {
-    return this.readyState === 4 && this.status === 200;
-   }
-
- };
-
-}
 
   app().init();
+
 
 })(window.DOM);

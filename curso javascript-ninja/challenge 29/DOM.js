@@ -1,12 +1,53 @@
 
 
-(function () {
+(function (win, document) {
 
-function DOM (elements) {
-      this.element = document.querySelectorAll(elements);
-      if (this.element.length === 1)
-        return this.get(0);
+function DOM (element) {
+  if (!(this instanceof DOM))
+    return new DOM (element);
+  console.log (this);
+    this.element = document.querySelectorAll(element);
+    if (this.element.length === 1)
+      return this.get();
     }
+
+     DOM.isArray = function isArray(param) {
+      return Object.prototype.toString.call(param) === '[object Array]';
+    };
+
+    console.log(DOM.isArray([1, 2, 3]));
+
+    DOM.isObject = function isObject (param) {
+      return Object.prototype.toString.call (param) === '[object Object]';
+    }
+    console.log (DOM.isObject ({a: 1, b: 2}));
+
+    DOM.isFunction = function isFunction (param) {
+      return Object.prototype.toString.call (param) === '[object Function]';
+    }
+    console.log (DOM.isFunction (function () {}));
+
+    DOM.isNumber = function isNumber (param) {
+      return Object.prototype.toString.call (param) === '[object Number]';
+    }
+    console.log (DOM.isNumber (10));
+
+    DOM.isString = function isString (param) {
+      return Object.prototype.toString.call (param) === '[object String]';
+    }
+    console.log (DOM.isString ('amor e sexo'));
+
+    DOM.isBoolean = function isBoolean (param) {
+      return Object.prototype.toString.call (param) === '[object Boolean]';
+    }
+    console.log (DOM.isBoolean (false));
+
+    DOM.isNull = function isNull (param) {
+      return Object.prototype.toString.call (param) === '[object Null]'
+      || Object.prototype.toString.call (param) === '[object Undefined]';
+    }
+    console.log (DOM.isNull (undefined)) 
+
 
     DOM.prototype.on = function on (event, callback) {
       Array.prototype.forEach.call(this.element, function (element) {
@@ -20,7 +61,7 @@ function DOM (elements) {
       });
       };
 
-     DOM.prototype.get = function get (index) {
+    DOM.prototype.get = function get (index) {
       if (!index)
         return this.element[0];
       return this.element[index];
@@ -78,43 +119,7 @@ function DOM (elements) {
     };
 
 
-    DOM.isArray = function isArray(param) {
-      return Object.prototype.toString.call(param) === '[object Array]';
-    };
 
-    console.log(DOM.isArray([1, 2, 3]));
+ 	win.DOM = DOM;
 
-    DOM.isObject = function isObject (param) {
-      return Object.prototype.toString.call (param) === '[object Object]';
-    }
-    console.log (DOM.isObject ({a: 1, b: 2}));
-
-    DOM.isFunction = function isFunction (param) {
-      return Object.prototype.toString.call (param) === '[object Function]';
-    }
-    console.log (DOM.isFunction (function () {}));
-
-    DOM.isNumber = function isNumber (param) {
-      return Object.prototype.toString.call (param) === '[object Number]';
-    }
-    console.log (DOM.isNumber (10));
-
-    DOM.isString = function isString (param) {
-      return Object.prototype.toString.call (param) === '[object String]';
-    }
-    console.log (DOM.isString ('amor e sexo'));
-
-    DOM.isBoolean = function isBoolean (param) {
-      return Object.prototype.toString.call (param) === '[object Boolean]';
-    }
-    console.log (DOM.isBoolean (false));
-
-    DOM.isNull = function isNull (param) {
-      return Object.prototype.toString.call (param) === '[object Null]'
-      || Object.prototype.toString.call (param) === '[object Undefined]';
-    }
-    console.log (DOM.isNull (undefined))
-
- 	window.DOM = DOM;
-
-    }) ();
+  }) (window, document);
