@@ -45,7 +45,7 @@
       },
 
       initEvents: function initEvents() {
-        $('[data-js="form-register"]').get.on('submit', this.handleSubmit);
+        $('[data-js="form-register"]').get().on('submit', this.handleSubmit);
       },
 
       handleSubmit: function handleSubmit(e) {
