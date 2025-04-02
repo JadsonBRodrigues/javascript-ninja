@@ -74,7 +74,7 @@
 
       isReady: function isReady() {
         return this.readyState === 4 && this.status === 200
-      }
+      },
 
     };
   }
