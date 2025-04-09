@@ -3,12 +3,12 @@
 (function (win, document) {
 
 function DOM (element) {
-  if (!(this instanceof DOM))
+      if (!(this instanceof DOM))
     return new DOM (element);
     this.element = document.querySelectorAll(element);
     }
 
-     DOM.isArray = function isArray(param) {
+    DOM.isArray = function isArray(param) {
       return Object.prototype.toString.call(param) === '[object Array]';
     };
 
@@ -43,8 +43,7 @@ function DOM (element) {
       return Object.prototype.toString.call (param) === '[object Null]'
       || Object.prototype.toString.call (param) === '[object Undefined]';
     }
-    console.log (DOM.isNull (undefined)) 
-
+    console.log (DOM.isNull (undefined))
 
     DOM.prototype.on = function on (event, callback) {
       Array.prototype.forEach.call(this.element, function (element) {
@@ -117,7 +116,8 @@ function DOM (element) {
     };
 
 
+    
 
  	win.DOM = DOM;
 
-  }) (window, document);
+    }) (window, document);

@@ -45,14 +45,43 @@
       },
 
       initEvents: function initEvents() {
-        $('[data-js="form-register"]').get().on('submit', this.handleSubmit);
+        $('[data-js="form-register"]').on('submit', this.handleSubmit);
       },
 
       handleSubmit: function handleSubmit(e) {
         e.preventDefault();
         console.log('submit');
-      },
+        var $tableCar = $ ('[data-js="table-car"]').get();
+        $tableCar.appendChild(app().createNewcar());
+      }, 
 
+      createNewcar: function createNewcar() {
+        var $fragment = document.createDocumentFragment();
+        var $tr = document.createElement('tr');
+        var $tdImage = document.createElement('td');
+        var $image = document.createElement('img');
+        var $tdBrand = document.createElement('td');
+        var $tdYear = document.createElement('td');
+        var $tdSign = document.createElement('td');
+        var $tdColor = document.createElement('td');
+
+        $image.src = $('[data-js="image"]').get().value;
+        $tdImage.appendChild($image);
+
+        $tdBrand.textContent = $('[data-js="brand-model"]').get().value;
+        $tdYear.textContent = $('[data-js="year"]').get().value;
+        $tdSign.textContent = $('[data-js="sign"]').get().value;
+        $tdColor.textContent = $('[data-js="color"]').get().value;
+
+        $tr.appendChild($tdImage);
+        $tr.appendChild($tdBrand);
+        $tr.appendChild($tdYear);
+        $tr.appendChild($tdSign);
+        $tr.appendChild($tdColor);
+
+        return $fragment.appendChild($tr);
+
+      },
 
       companyInfo: function companyInfo() {
         var ajax = new XMLHttpRequest();
@@ -77,7 +106,7 @@
       },
 
     };
-  }
+  };
 
 
   app().init();
