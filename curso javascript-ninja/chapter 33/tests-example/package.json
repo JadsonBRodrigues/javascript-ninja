@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "chai": "^5.2.0"
+  }
+}
